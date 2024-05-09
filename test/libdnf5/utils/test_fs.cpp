@@ -21,6 +21,7 @@ along with libdnf.  If not, see <https://www.gnu.org/licenses/>.
 #include "test_fs.hpp"
 
 #include "utils/fs/utils.hpp"
+#include "utils/fs/file.hpp"
 
 #include <fcntl.h>
 #include <libdnf5/common/exception.hpp>
