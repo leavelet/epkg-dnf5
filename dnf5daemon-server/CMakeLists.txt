@@ -25,7 +25,7 @@ target_link_libraries(
         common
         libdnf5
         libdnf5-cli
-        ${SDBUS_CPP_LIBRARIES}
+        SDBusCpp::sdbus-c++
         ${JSONC_LIBRARIES}
         Threads::Threads
 )

@@ -9,7 +9,7 @@ set_target_properties(needs_restarting_cmd_plugin PROPERTIES PREFIX "")
 
 pkg_check_modules(SDBUS_CPP REQUIRED sdbus-c++)
 
-target_link_libraries(needs_restarting_cmd_plugin PRIVATE dnf5 libdnf5 libdnf5-cli ${SDBUS_CPP_LIBRARIES})
+target_link_libraries(needs_restarting_cmd_plugin PRIVATE dnf5 libdnf5 libdnf5-cli SDBusCpp::sdbus-c++)
 
 install(TARGETS needs_restarting_cmd_plugin LIBRARY DESTINATION ${CMAKE_INSTALL_FULL_LIBDIR}/dnf5/plugins/)
 
