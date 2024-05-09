@@ -48,6 +48,8 @@ public:
     const OptionNumber<std::int32_t> & get_errorlevel_option() const;
     OptionPath & get_installroot_option();
     const OptionPath & get_installroot_option() const;
+    OptionString & get_epkg_option();
+    const OptionString & get_epkg_option() const;
     OptionPath & get_config_file_path_option();
     const OptionPath & get_config_file_path_option() const;
     OptionBool & get_plugins_option();

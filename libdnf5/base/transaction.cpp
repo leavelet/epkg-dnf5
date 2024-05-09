@@ -655,6 +655,11 @@ Transaction::TransactionRunResult Transaction::Impl::_run(
     }
 
     rpmtransFlags rpm_transaction_flags{RPMTRANS_FLAG_NONE};
+
+    if (config.get_epkg_option().get_value() != "") {
+        rpm_transaction_flags |= RPMTRANS_FLAG_EPKG;
+    }
+
     for (const auto & tsflag : config.get_tsflags_option().get_value()) {
         bool found = false;
         for (const auto & [string_name, enum_item] : string_tsflag_map) {

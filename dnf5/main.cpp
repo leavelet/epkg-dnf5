@@ -487,6 +487,14 @@ void RootCommand::set_argument_parser() {
     installroot->link_value(&config.get_installroot_option());
     global_options_group->register_argument(installroot);
 
+    auto epkg = parser.add_new_named_arg("epkg");
+    epkg->set_long_name("epkg");
+    epkg->set_description(_("set the epkg env name"));
+    epkg->set_has_value(true);
+    epkg->set_arg_value_help("EPKG ENV NAME");
+    epkg->link_value(&config.get_epkg_option());
+    global_options_group->register_argument(epkg);
+
     auto use_host_config = parser.add_new_named_arg("use-host-config");
     use_host_config->set_long_name("use-host-config");
     use_host_config->set_description(

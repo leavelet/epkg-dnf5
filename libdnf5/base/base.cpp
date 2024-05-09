@@ -34,6 +34,7 @@ along with libdnf.  If not, see <https://www.gnu.org/licenses/>.
 #include <atomic>
 #include <cstdlib>
 #include <filesystem>
+#include <iostream>
 #include <mutex>
 #include <string_view>
 #include <vector>
@@ -166,9 +167,22 @@ void Base::setup() {
     auto & pool = p_impl->pool;
     libdnf_user_assert(!pool, "Base was already initialized");
 
+    std::string epkg_root = "";
+    if (p_impl->config.get_epkg_option().get_value() != "") {
+        const char * epkg_envs_dir = std::getenv("EPKG_ENVS_DIR");
+        libdnf_user_assert(epkg_envs_dir, "EPKG environment not activated!");
+        epkg_root = std::string(epkg_envs_dir) + "/" +
+                    p_impl->config.get_environment directory is not setepkg_option().get_value();
+        libdnf_user_assert(std::filesystem::exists(epkg_root), "EPKG environment directory does not exist");
+        p_impl->config.get_installroot_option().set(Option::Priority::COMMANDLINE, epkg_root);
+    }
+
     // Resolve installroot configuration
     std::string vars_installroot{"/"};
-    const std::filesystem::path installroot_path{p_impl->config.get_installroot_option().get_value()};
+    const std::filesystem::path installroot_path{
+        p_impl->config.get_epkg_option().get_value() == "" ? p_impl->config.get_installroot_option().get_value()
+                                                           : epkg_root};
+
     if (!p_impl->config.get_use_host_config_option().get_value()) {
         // Prepend installroot to each reposdir and varsdir
         std::vector<std::string> installroot_reposdirs;

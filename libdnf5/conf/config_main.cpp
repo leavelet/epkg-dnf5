@@ -95,6 +95,7 @@ class ConfigMain::Impl {
     OptionNumber<std::int32_t> debuglevel{2, 0, 10};
     OptionNumber<std::int32_t> errorlevel{3, 0, 10};
     OptionPath installroot{"/", false, true};
+    OptionString epkg{""};
     OptionBool use_host_config{false};
     OptionPath config_file_path{CONF_FILENAME};
     OptionBool plugins{true};
@@ -527,6 +528,15 @@ const OptionNumber<std::int32_t> & ConfigMain::get_errorlevel_option() const {
 OptionPath & ConfigMain::get_installroot_option() {
     return p_impl->installroot;
 }
+
+OptionString & ConfigMain::get_epkg_option() {
+    return p_impl->epkg;
+}
+
+const OptionString & ConfigMain::get_epkg_option() const {
+    return p_impl->epkg;
+}
+
 const OptionPath & ConfigMain::get_installroot_option() const {
     return p_impl->installroot;
 }
