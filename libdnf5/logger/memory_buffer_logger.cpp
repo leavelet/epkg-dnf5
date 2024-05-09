@@ -20,6 +20,7 @@ along with libdnf.  If not, see <https://www.gnu.org/licenses/>.
 #include "libdnf5/logger/memory_buffer_logger.hpp"
 
 #include <mutex>
+#include <vector>
 
 namespace libdnf5 {
 
