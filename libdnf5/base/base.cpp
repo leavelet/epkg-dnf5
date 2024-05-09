@@ -172,7 +172,7 @@ void Base::setup() {
         const char * epkg_envs_dir = std::getenv("EPKG_ENVS_DIR");
         libdnf_user_assert(epkg_envs_dir, "EPKG environment not activated!");
         epkg_root = std::string(epkg_envs_dir) + "/" +
-                    p_impl->config.get_environment directory is not setepkg_option().get_value();
+                    p_impl->get_epkg_option().get_value();
         libdnf_user_assert(std::filesystem::exists(epkg_root), "EPKG environment directory does not exist");
         p_impl->config.get_installroot_option().set(Option::Priority::COMMANDLINE, epkg_root);
     }
