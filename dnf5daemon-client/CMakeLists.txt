@@ -14,6 +14,7 @@ include_directories(.)
 include_directories(..)
 
 pkg_check_modules(SDBUS_CPP REQUIRED sdbus-c++>=0.9.0)
+find_package(sdbus-c++ REQUIRED)
 
 pkg_check_modules(JSONC REQUIRED json-c)
 include_directories(${JSONC_INCLUDE_DIRS})

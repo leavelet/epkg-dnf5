@@ -8,6 +8,7 @@ add_library(needs_restarting_cmd_plugin MODULE needs_restarting.cpp needs_restar
 set_target_properties(needs_restarting_cmd_plugin PROPERTIES PREFIX "")
 
 pkg_check_modules(SDBUS_CPP REQUIRED sdbus-c++)
+find_package(sdbus-c++ REQUIRED)
 
 target_link_libraries(needs_restarting_cmd_plugin PRIVATE dnf5 libdnf5 libdnf5-cli SDBusCpp::sdbus-c++)
 
