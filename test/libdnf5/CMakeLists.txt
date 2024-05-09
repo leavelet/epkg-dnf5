@@ -23,7 +23,8 @@ include_directories(${JSONC_INCLUDE_DIRS})
 target_link_libraries(run_tests PRIVATE ${JSONC_LIBRARIES})
 
 pkg_check_modules(LIBSOLV REQUIRED libsolv>=0.7.21)
-target_link_libraries(run_tests PRIVATE ${LIBSOLV_LIBRARIES})
+FIND_PACKAGE(LibSolv REQUIRED ext)
+target_link_libraries(run_tests PRIVATE ${LibSolv_LIBRARIES})
 
 
 if(WITH_PERFORMANCE_TESTS)
