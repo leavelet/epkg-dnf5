@@ -52,8 +52,10 @@ list(APPEND LIBDNF5_PC_REQUIRES "${LIBMODULEMD_MODULE_NAME}")
 target_link_libraries(libdnf5 PRIVATE ${LIBMODULEMD_LIBRARIES})
 
 pkg_check_modules(LIBSOLV REQUIRED libsolv>=0.7.25)
+FIND_PACKAGE(LibSolv REQUIRED ext)
+
 list(APPEND LIBDNF5_PC_REQUIRES "${LIBSOLV_MODULE_NAME}")
-target_link_libraries(libdnf5 PRIVATE ${LIBSOLV_LIBRARIES})
+target_link_libraries(libdnf5 PRIVATE ${LibSolv_LIBRARIES})
 
 pkg_check_modules(LIBSOLVEXT REQUIRED libsolvext>=0.7.7)
 list(APPEND LIBDNF5_PC_REQUIRES_PRIVATE "${LIBSOLVEXT_MODULE_NAME}")
